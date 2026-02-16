@@ -1,2 +1,7 @@
-com\poo\Unimagdalena.class
+com\main\EdMenu.class
+com\poo\CancionBotellasVerdes.class
+com\ed\Pila.class
 com\main\main.class
+com\main\PrincipalMenu.class
+com\main\PooMenu.class
+com\ed\BasicPila.class

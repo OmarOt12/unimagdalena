@@ -1,5 +1,4 @@
 package com.main;
-
 /**
  *
  * @author Omar Orozco
@@ -7,6 +6,9 @@ package com.main;
 public class main {
     
     public static void main(String[] args ){
+        PrincipalMenu principalMenu = new PrincipalMenu();
+        
+        principalMenu.viewMenu();
         
     }
     

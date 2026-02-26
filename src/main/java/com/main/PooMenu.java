@@ -1,37 +1,42 @@
 package com.main;
+
 import java.util.Scanner;
 import com.poo.CancionBotellasVerdes;
-/**
- *
- * @author omara
- */
+
 public class PooMenu {
-    Scanner sc = new Scanner(System.in);
+
+    private final Scanner sc;
+    private final CancionBotellasVerdes cancionBotellasVerdes;
     
-    CancionBotellasVerdes cancionBotellasVerdes = new CancionBotellasVerdes();
-    
-    
-    public void viewpooMenu(){        
-        System.out.println("""
-                               =========================
-                                       MENU POO
-                               =========================
-                               1. EJERCICIO: CANCION BOTELLAS VERDES.
-                               """);     
-        System.out.print("DIGITE SU OPCION: ");
-        int opc = sc.nextInt();
-        executePooMenu(opc);
-    }
-    
-    public void executePooMenu(int opc){
+    public PooMenu (Scanner sc){
+        this.cancionBotellasVerdes = new CancionBotellasVerdes();
+        this.sc = sc;
         
-        switch (opc) {
-                case 1 -> {
-                    cancionBotellasVerdes.Cancion();
-            }
-                case 2 -> {
-            }
-            } 
     }
     
+    
+    
+    public void viewPooMenu() {
+        int opc;
+
+        do {
+            System.out.println("""
+                           =========================
+                                   MENU POO
+                           =========================
+                           1. EJERCICIO: CANCION BOTELLAS VERDES.
+                           0. VOLVER.
+                           """);
+
+            System.out.print("DIGITE SU OPCION: ");
+            opc = sc.nextInt();
+
+            switch (opc) {
+                case 1 -> cancionBotellasVerdes.Cancion();
+                case 0 -> System.out.println("Volviendo...");
+                default -> System.out.println("Opcion invalida");
+            }
+
+        } while (opc != 0);
+    }
 }

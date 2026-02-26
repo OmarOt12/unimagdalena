@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.ed;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,13 +10,19 @@ import java.util.Scanner;
  * @author omara
  */
 public class BasicPila {
-
-    public void basicPila() {      
-        //Instanciamos la Pila
+    
+    private final Scanner sc;       
+    public BasicPila(Scanner sc) {
+        this.sc = sc;
+    }
+        
+    public void basicPila() {
+        //Instanciamos la Pila                
         Pila<Integer> pila = new Pila<>();
-        Scanner sc = new Scanner(System.in);
+        //Instanciamos el menu de ED        
+                
         int opc;
-        do{
+        do {
 
             System.out.println("""
                                =========================
@@ -52,17 +56,22 @@ public class BasicPila {
                     sc.nextLine();
                 }
                 case 3 -> {
-                    int pilaTop = pila.top();
-                    System.out.println("El tope de la Pila es: " + pilaTop);
+                    Integer pilaTop = pila.top();
+                    if (pilaTop != null) {
+                        System.out.println("El tope de la Pila es: " + pilaTop);
+                    } else {
+                        System.out.println("La pila esta vacia...");
+                    }
                     sc.nextLine();
+
                 }
                 case 4 -> {
-                    int pilaSize = pila.size();
+                    int pilaSize = pila.size();                                                            
                     System.out.println("La Pila tiene " + pilaSize + " elemento/s.");
                     sc.nextLine();
                 }
                 case 5 -> {
-                    
+
                     if (pila.empty() != true) {
                         System.out.println("La pila no esta vacia.");
                     } else {
@@ -75,60 +84,12 @@ public class BasicPila {
                     pila.print_stack();
                     sc.nextLine();
                 }
-                case 7 ->{
-                    break;
+                case 7 -> {
+                    System.out.println("Saliendo...");
                 }
             }
 
-            
-
-        }while(opc != 7);
-
-        
-
-       
-
-    }
-    
-}
-
-class Pila<T> {
-
-    private ArrayList<T> items;
-
-    public Pila() {
-        items = new ArrayList<>();
+        } while (opc != 7);
     }
 
-    public void push(T elemento) {
-        items.add(elemento);
-    }
-
-    public T pop() {
-        if (this.empty()) {
-            return null;
-        }
-        return items.remove(items.size() - 1);
-    }
-
-    public void print_stack() {
-        for (int i = this.size() - 1; i >= 0; i--) {
-            System.out.print(items.get(i) + " | ");
-        }
-    }
-
-    public boolean empty() {
-        return items.isEmpty();
-    }
-
-    public int size() {
-        return items.size();
-    }
-
-    public T top() {
-        if (this.empty()) {
-            return null;
-        }
-        return items.get(items.size() - 1);
-    }
 }

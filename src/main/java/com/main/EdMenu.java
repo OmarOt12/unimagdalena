@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.main;
 
 import com.ed.BasicPila;
@@ -12,34 +8,36 @@ import java.util.Scanner;
  * @author omara
  */
 public class EdMenu {
-    Scanner sc = new Scanner(System.in);
+
+    private final Scanner sc;
+    private final BasicPila basicPila;
     
-    BasicPila basicPila = new BasicPila();
-    
-    
-    public void viewEdMenu(){        
-        System.out.println("""
-                               =========================
-                                       MENU ED
-                               =========================
-                               1. EJERCICIO: PILA BASICA.
-                               """);     
-        System.out.print("DIGITE SU OPCION: ");
-        int opc = sc.nextInt();
-        executeEdMenu(opc);
+    public EdMenu (Scanner sc){
+        this.sc = sc;
+        this.basicPila = new BasicPila(sc);
     }
-    
-    public void executeEdMenu(int opc){
-        
-        switch (opc) {
-                case 1 -> {
-                    basicPila.basicPila();
+
+    public void viewEdMenu() {
+        int opc;
+
+        do {
+            System.out.println("""
+                           =========================
+                                   MENU ED
+                           =========================
+                           1. EJERCICIO: PILA BASICA.
+                           0. VOLVER.
+                           """);
+
+            System.out.print("DIGITE SU OPCION: ");
+            opc = sc.nextInt();
+
+            switch (opc) {
+                case 1 -> basicPila.basicPila();
+                case 0 -> System.out.println("Volviendo...");
+                default -> System.out.println("Opcion invalida");
             }
-                case 2 -> {
-            }
-            } 
+
+        } while (opc != 0);
     }
-    
-    
-    
 }
